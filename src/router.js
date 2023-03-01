@@ -18,5 +18,5 @@ const routes = [
 
 export default createRouter({
   routes,
-  history: createWebHistory(),
+  history: createWebHistory("/finsweet_vue/"),
 });
