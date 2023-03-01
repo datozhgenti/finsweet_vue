@@ -222,6 +222,12 @@ a {
   font-size: 24px;
 }
 
+/* text-alings */
+
+.text-align-center {
+  text-align: center;
+}
+
 /* gaps */
 
 .gapX-93 {
