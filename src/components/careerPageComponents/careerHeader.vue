@@ -1,6 +1,6 @@
 <template>
   <header class="p160 margin-top-81 padding-96 text-align-center relative">
-    <div class="header-top">
+    <div class="header-top opacity-0">
       <p
         class="black-color font-weight-500 font-14 letter-spacing-3 capitalize"
         style="margin-bottom: 24px"
@@ -22,14 +22,14 @@
       <img src="@/assets/btn-shapes.svg" alt="shapes" width="48" height="52" />
     </div>
     <div class="header-bottom">
-      <div class="careers-img-wrapper">
+      <div class="careers-img-wrapper opacity-0">
         <img
           src="@/assets/careers_img.png"
           alt="careers image"
           class="display-block"
         />
       </div>
-      <div class="cta-wrapper">
+      <div class="cta-wrapper opacity-0">
         <p
           class="font-weight-500 font-18 color-blue"
           style="margin-bottom: 16px"
@@ -42,8 +42,15 @@
   </header>
 </template>
 
-<script>
-export default {};
+<script setup>
+import obeserveFunc from "@/composables/observer";
+import { onMounted } from "vue";
+
+onMounted(() => {
+  obeserveFunc(".header-top", "fade-right");
+  obeserveFunc(".careers-img-wrapper", "fade-left");
+  obeserveFunc(".cta-wrapper", "fade-top");
+});
 </script>
 
 <style scoped>
@@ -72,5 +79,22 @@ export default {};
 
 .cta-wrapper {
   margin-top: 80px;
+}
+
+@media all and (max-width: 1445px) {
+  h2 {
+    font-size: 6vw;
+    line-height: normal;
+  }
+
+  .header-top {
+    width: auto;
+  }
+}
+
+@media all and (max-width: 675px) {
+  .shape {
+    display: none;
+  }
 }
 </style>

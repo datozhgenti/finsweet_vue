@@ -73,4 +73,16 @@ const vacancies = ref([
   row-gap: 32px;
   flex-wrap: wrap;
 }
+
+@media all and (max-width: 1565px) {
+  .vacancies-wrapper {
+    justify-content: space-evenly;
+  }
+}
+
+@media all and (max-width: 472px) {
+  .vacancies-wrapper {
+    padding: 20px;
+  }
+}
 </style>

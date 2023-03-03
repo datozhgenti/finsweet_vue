@@ -1,5 +1,5 @@
 <template>
-  <div class="vacancy-card">
+  <div class="vacancy-card opacity-0">
     <h6 class="black-color font-16">{{ nameProp }}</h6>
     <div class="p-tags">
       <p class="gray-color" style="margin-bottom: 3px">{{ firstProp }}</p>
@@ -17,6 +17,12 @@
 <script setup>
 /* eslint-disable */
 import arrowLink from "./arrowLink.vue";
+import { onMounted } from "vue";
+import obeserveFunc from "@/composables/observer";
+
+onMounted(() => {
+  obeserveFunc(".vacancy-card", "fade-right");
+});
 
 defineProps(["nameProp", "firstProp", "secondProp"]);
 </script>
