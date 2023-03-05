@@ -59,7 +59,7 @@ html {
   font-family: "Poppins", sans-serif;
 }
 
-/* wrapper div styles */
+/* all image styles */
 
 /* 160px left and right padding */
 .p160 {
@@ -95,6 +95,13 @@ a {
 .display-none {
   display: none;
 }
+
+/* flex wraps*/
+
+.wrap {
+  flex-wrap: wrap;
+}
+
 /* opacities */
 
 .opacity-60 {
