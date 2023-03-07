@@ -103,7 +103,7 @@ import obeserveElement from "@/composables/observer";
 
 onMounted(() => {
   obeserveElement(".blog-header .left", "fade-right");
-  obeserveElement(".blog-header .right", "fade-left");
+  obeserveElement(".pink-section-wrapper", "fade-left");
 });
 </script>
 
