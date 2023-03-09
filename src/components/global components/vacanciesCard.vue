@@ -9,6 +9,7 @@
       color="#5D5FEF"
       name="Apply Now"
       :arrow-photo="require('@/assets/right-arrow-black.png')"
+      :pageLink="'/career/' + nameProp.split(' ').join('-')"
       class="font-weight-500"
     ></arrowLink>
   </div>

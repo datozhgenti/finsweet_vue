@@ -4,14 +4,27 @@ import homePage from "@/pages/homePage.vue";
 import servicePage from "@/pages/servicePage.vue";
 import companyPage from "@/pages/companyPage.vue";
 import careerPage from "@/pages/careerPage.vue";
+import careerInner from "@/pages/careerInner";
 import blogPage from "@/pages/blogPage.vue";
 import contactPage from "@/pages/contactPage.vue";
+import detailsComp from "@/components/careerInnerComponents/detailsComp.vue";
+import reqComp from "@/components/careerInnerComponents/reqComp.vue";
+import respComp from "@/components/careerInnerComponents/respComp.vue";
 
 const routes = [
   { path: "/", component: homePage },
   { path: "/service", component: servicePage },
   { path: "/company", component: companyPage },
   { path: "/career", component: careerPage },
+  {
+    path: "/career/:careerName",
+    component: careerInner,
+    children: [
+      { path: "details", component: detailsComp, alias: "" },
+      { path: "requirments", component: reqComp },
+      { path: "responsibilities", component: respComp },
+    ],
+  },
   { path: "/blog", component: blogPage },
   { path: "/contact", component: contactPage },
 ];

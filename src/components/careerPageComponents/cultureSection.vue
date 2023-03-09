@@ -6,7 +6,7 @@
           class="black-color font-weight-500 font-14 letter-spacing-3 capitalize"
           style="margin-bottom: 16px"
         >
-          CAREER AT FINSWEET
+          OUR WORK & CULTURE
         </p>
         <h2
           class="color-blue font-weight-600 font-36 line-height-54"
