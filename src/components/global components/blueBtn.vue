@@ -11,6 +11,7 @@
       alt="button shapes"
       style="position: absolute; top: 0; left: 0"
     />
+    <slot> </slot>
   </button>
 </template>
 

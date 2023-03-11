@@ -1,6 +1,6 @@
 <template>
   <section class="job-requirments-section p160">
-    <div class="requirments-wrapper">
+    <div class="requirments-wrapper opacity-0">
       <div class="requirments-menu flex justify-center">
         <div class="menu-btns-wrapper flex space-between align-center">
           <router-link
@@ -29,8 +29,13 @@
   </section>
 </template>
 
-<script>
-export default {};
+<script setup>
+import { onMounted } from "vue";
+import obeserveElement from "@/composables/observer";
+
+onMounted(() => {
+  obeserveElement(".requirments-wrapper", "fade-right");
+});
 </script>
 
 <style scoped>
@@ -66,6 +71,21 @@ a {
   left: 0;
   bottom: -4px;
   animation: line 0.5s ease-in;
+}
+
+@media all and (max-width: 750px) {
+  .menu-btns-wrapper {
+    /* flex-direction: column; */
+    margin: 0 20px 0;
+  }
+
+  .menu-btns-wrapper a {
+    font-size: 3vw;
+  }
+
+  .requirments-text-wrapper {
+    padding: 30px;
+  }
 }
 </style>
 

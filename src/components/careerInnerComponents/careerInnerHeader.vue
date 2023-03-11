@@ -1,9 +1,9 @@
 <template>
   <header
-    class="career-inner-header margin-top-81 padding-96 p160 flex space-evently"
+    class="career-inner-header margin-top-81 padding-96 p160 flex space-evently wrap"
   >
     <div class="left">
-      <div class="career-name-wrapper">
+      <div class="career-name-wrapper opacity-0">
         <p
           class="black-color font-weight-500 font-14 letter-spacing-3 capitalize"
           style="margin-bottom: 24px"
@@ -23,12 +23,14 @@
           </p>
         </div>
         <div class="blue-btn-wrapper">
-          <blueBtn btnName="Apply Now"></blueBtn>
+          <blueBtn btnName="Apply Now">
+            <a href="#apply-form" class="absolute display-block"></a>
+          </blueBtn>
         </div>
       </div>
     </div>
     <div class="right">
-      <div class="job-description relative">
+      <div class="job-description relative opacity-0">
         <h4 class="font-weight-600 color-blue font-size-24 line-height-36">
           Job Description
         </h4>
@@ -53,6 +55,13 @@
 
 <script setup>
 import blueBtn from "../global components/blueBtn.vue";
+import { onMounted } from "vue";
+import obeserveElement from "@/composables/observer";
+
+onMounted(() => {
+  obeserveElement(".career-name-wrapper", "fade-right");
+  obeserveElement(".job-description", "fade-left");
+});
 </script>
 
 <style scoped>
@@ -85,6 +94,40 @@ import blueBtn from "../global components/blueBtn.vue";
 
 h4 {
   margin-bottom: 24px;
+}
+
+a {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.left {
+  margin-right: 20px;
+}
+
+@media all and (max-width: 1398px) {
+  header {
+    row-gap: 40px;
+    justify-content: space-between;
+  }
+}
+
+@media all and (max-width: 550px) {
+  .job-description {
+    width: auto;
+    padding: 30px;
+  }
+
+  .gray-text-color-wrapper {
+    width: auto;
+  }
+
+  h2 {
+    font-size: 6vw;
+    line-height: normal;
+  }
 }
 </style>
 

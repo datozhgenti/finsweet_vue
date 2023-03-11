@@ -1,5 +1,5 @@
 <template>
-  <section class="apply-section p160">
+  <section class="apply-section p160" id="apply-form">
     <div>
       <h3
         class="color-blue font-weight-600 font-36 line-height-54"
@@ -12,16 +12,16 @@
       <form @submit.prevent>
         <div class="apply-inputs-wrapper grid">
           <div>
-            <input type="text" placeholder="First Name" />
+            <input type="text" placeholder="First Name" class="left-input" />
           </div>
           <div>
-            <input type="text" placeholder="Last Name" />
+            <input type="text" placeholder="Last Name" class="right-input" />
           </div>
           <div>
-            <input type="email" placeholder="Email Id" />
+            <input type="email" placeholder="Email Id" class="left-input" />
           </div>
           <div>
-            <input type="tel" placeholder="Mobile No" />
+            <input type="tel" placeholder="Mobile No" class="right-input" />
           </div>
           <div class="text-area-div">
             <textarea
@@ -47,6 +47,14 @@
 
 <script setup>
 import blueBtn from "../global components/blueBtn.vue";
+import { onMounted } from "vue";
+import obeserveElement from "@/composables/observer";
+
+onMounted(() => {
+  obeserveElement(".left-input", "fade-right");
+  obeserveElement(".right-input", "fade-left");
+  obeserveElement(".text-area-div", "fade-left");
+});
 </script>
 
 <style scoped>
@@ -105,5 +113,31 @@ input[type="checkbox"] {
 
 .submit-btn-wrapper {
   margin-top: 36px;
+}
+
+input,
+.text-area-div {
+  opacity: 0;
+}
+
+@media all and (max-width: 1580px) {
+  .apply-inputs-wrapper {
+    grid-template-columns: 100%;
+  }
+
+  .text-area-div {
+    grid-column: 1 span;
+  }
+
+  textarea {
+    widows: 100%;
+  }
+}
+
+@media all and (max-width: 485px) {
+  input,
+  textarea {
+    padding: 20px !important;
+  }
 }
 </style>
