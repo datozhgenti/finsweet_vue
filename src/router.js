@@ -10,6 +10,7 @@ import contactPage from "@/pages/contactPage.vue";
 import detailsComp from "@/components/careerInnerComponents/detailsComp.vue";
 import reqComp from "@/components/careerInnerComponents/reqComp.vue";
 import respComp from "@/components/careerInnerComponents/respComp.vue";
+import blogInner from "@/pages/blogInner.vue";
 
 const routes = [
   { path: "/", component: homePage },
@@ -26,6 +27,7 @@ const routes = [
     ],
   },
   { path: "/blog", component: blogPage },
+  { path: "/blog/:post", component: blogInner, name: "postPage" },
   { path: "/contact", component: contactPage },
 ];
 

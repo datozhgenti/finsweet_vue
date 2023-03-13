@@ -115,7 +115,7 @@ input[type="checkbox"] {
   margin-top: 36px;
 }
 
-input,
+input:not(input[type="checkbox"]),
 .text-area-div {
   opacity: 0;
 }

@@ -52,6 +52,14 @@ img {
   width: 296px;
 }
 
+.recent-post {
+  cursor: pointer;
+}
+
+.recent-post:hover h4 {
+  text-decoration: underline;
+}
+
 @media all and (max-width: 609px) {
   .recent-post {
     flex-direction: column;

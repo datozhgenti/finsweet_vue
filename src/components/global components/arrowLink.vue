@@ -25,7 +25,6 @@ defineProps({
     type: String,
   },
   pageLink: {
-    type: String,
     default: "/",
   },
   arrowPhoto: {

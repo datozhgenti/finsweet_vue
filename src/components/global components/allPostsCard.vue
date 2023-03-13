@@ -51,4 +51,12 @@ defineProps(["imgProp"]);
 .card-text .gray-color {
   margin: 16px 0 24px;
 }
+
+.all-post-card {
+  cursor: pointer;
+}
+
+.all-post-card:hover h4 {
+  text-decoration: underline;
+}
 </style>

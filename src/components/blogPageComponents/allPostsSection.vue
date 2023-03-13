@@ -11,6 +11,16 @@
         v-for="post in allPosts"
         :key="post"
         :imgProp="post"
+        @click="
+          $router.push({
+            name: 'postPage',
+            params: {
+              post: 'We aim to attain the greatest satisfaction for our clients'
+                .split(' ')
+                .join('-'),
+            },
+          })
+        "
       ></allPostsCard>
     </div>
   </section>

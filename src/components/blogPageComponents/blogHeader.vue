@@ -30,6 +30,14 @@
           name="Read More"
           :arrow-photo="require('@/assets/right-arrow-black.png')"
           class="font-weight-500"
+          :pageLink="{
+            name: 'postPage',
+            params: {
+              post: 'Breaking the code How did we build our Figma plugin'
+                .split(' ')
+                .join('-'),
+            },
+          }"
         ></arrowLink>
       </div>
       <postAuhorHorizontal></postAuhorHorizontal>
@@ -50,7 +58,7 @@
             class="display-block"
           />
         </div>
-        <div>
+        <div class="aside-blog-post" @click="goToPostPage">
           <h4
             class="font-weight-600 font-24 line-height-36 color-blue"
             style="margin-bottom: 16px"
@@ -63,7 +71,7 @@
             dateProp="Jan 19, 2021"
           ></postAuthorVertical>
         </div>
-        <div class="middle-div">
+        <div class="middle-div aside-blog-post" @click="goToPostPage">
           <h4
             class="font-weight-600 font-24 line-height-36 color-blue"
             style="margin-bottom: 16px"
@@ -76,7 +84,7 @@
             dateProp="Jan 19, 2021"
           ></postAuthorVertical>
         </div>
-        <div>
+        <div class="aside-blog-post" @click="goToPostPage">
           <h4
             class="font-weight-600 font-24 line-height-36 color-blue"
             style="margin-bottom: 16px"
@@ -100,11 +108,25 @@ import postAuthorVertical from "../global components/postAuthorVertical.vue";
 import postAuhorHorizontal from "@/components/global components/postAuhorHorizontal.vue";
 import { onMounted } from "vue";
 import obeserveElement from "@/composables/observer";
+import { useRouter } from "vue-router";
 
 onMounted(() => {
   obeserveElement(".blog-header .left", "fade-right");
   obeserveElement(".pink-section-wrapper", "fade-left");
 });
+
+const router = useRouter();
+
+function goToPostPage() {
+  router.push({
+    name: "postPage",
+    params: {
+      post: "Great design expectations prejudice in digital products in Next Year"
+        .split(" ")
+        .join("-"),
+    },
+  });
+}
 </script>
 
 <style scoped>
@@ -134,6 +156,14 @@ onMounted(() => {
 
 div.middle-div {
   margin: 48px 0;
+}
+
+.aside-blog-post:hover h4 {
+  text-decoration: underline;
+}
+
+.aside-blog-post {
+  cursor: pointer;
 }
 
 @media all and (max-width: 1478px) {

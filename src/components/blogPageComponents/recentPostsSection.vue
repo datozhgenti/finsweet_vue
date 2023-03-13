@@ -11,6 +11,16 @@
         v-for="post in recentPosts"
         :key="post"
         :imgProp="post"
+        @click="
+          $router.push({
+            name: 'postPage',
+            params: {
+              post: 'Today\'s best design trends for digital products'
+                .split(' ')
+                .join('-'),
+            },
+          })
+        "
       ></recentPostCard>
     </div>
   </section>
