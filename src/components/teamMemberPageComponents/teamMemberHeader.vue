@@ -1,6 +1,6 @@
 <template>
   <header class="team-member-header p160 padding-96 margin-top-81">
-    <div class="member-info-wrapper center-with-margin">
+    <div class="member-info-wrapper center-with-margin opacity-0">
       <div class="member-image flex justify-center">
         <img
           :src="require(`@/assets/${$route.params.name}.png`)"
