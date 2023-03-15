@@ -25,13 +25,23 @@
         class="team-img-wrapper opacity-0"
       >
         <div class="relative">
-          <img :src="member" alt="member" class="display-block obj-fit-cover" />
+          <img
+            :src="member.imgUrl"
+            alt="member"
+            class="display-block obj-fit-cover"
+          />
           <div class="overlay absolute w100 h100">
             <div>
               <h4
                 class="font-weight-600 font-24 line-height-36 color-blue color-white"
+                @click="
+                  $router.push({
+                    name: 'memberPage',
+                    params: { name: member.name.split(' ').join('-') },
+                  })
+                "
               >
-                Javena Melo
+                {{ member.name }}
               </h4>
               <p
                 class="font-weight-500 font-14 color-blue line-height-20 color-white"
@@ -80,14 +90,14 @@ onMounted(() => {
 });
 
 const members = ref([
-  require("@/assets/Team 1.png"),
-  require("@/assets/Team 2.png"),
-  require("@/assets/Team 3.png"),
-  require("@/assets/Team 4.png"),
-  require("@/assets/Team 5.png"),
-  require("@/assets/Team 6.png"),
-  require("@/assets/Team 7.png"),
-  require("@/assets/Team 8.png"),
+  { imgUrl: require("@/assets/Ricardo-Diaz.png"), name: "Ricardo Diaz" },
+  { imgUrl: require("@/assets/Liam-Nison.png"), name: "Liam Nison" },
+  { imgUrl: require("@/assets/Oliver-Queen.png"), name: "Oliver Queen" },
+  { imgUrl: require("@/assets/Barry-Allen.png"), name: "Barry Allen" },
+  { imgUrl: require("@/assets/Bruce-Wayne.png"), name: "Bruce Wayne" },
+  { imgUrl: require("@/assets/John-Diggle.png"), name: "John Diggle" },
+  { imgUrl: require("@/assets/Peter-Parker.png"), name: "Peter Parker" },
+  { imgUrl: require("@/assets/Clark-Kent.png"), name: "Clark Kent" },
 ]);
 </script>
 
@@ -96,6 +106,13 @@ const members = ref([
   margin-bottom: 96px;
 }
 
+h4 {
+  cursor: pointer;
+}
+
+h4:hover {
+  text-decoration: underline;
+}
 .team-section-top {
   width: 624px;
 }

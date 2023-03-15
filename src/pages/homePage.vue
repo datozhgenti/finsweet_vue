@@ -6,7 +6,7 @@
   <servicesSection></servicesSection>
   <processSection></processSection>
   <testistemonialsSection></testistemonialsSection>
-  <blogSection></blogSection>
+  <blogSection captionProp="Read our latest blogs & news"></blogSection>
   <ctaSection></ctaSection>
   <footerComp></footerComp>
 </template>

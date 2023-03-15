@@ -5,7 +5,7 @@
       style="background-color: var(--light-blue); width: 16px; height: 16px"
     ></div>
     <h2 class="color-blue font-weight-600 font-48 line-height-58">
-      Read our latest blogs & news
+      {{ captionProp }}
     </h2>
     <div class="flex space-between blogs-wrapper">
       <blogPost
@@ -19,10 +19,13 @@
 </template>
 
 <script setup>
+/* eslint-disable */
 import blogPost from "../global components/blogPost.vue";
 import { ref } from "vue";
 import obeserveFunc from "@/composables/observer";
 import { onMounted } from "vue";
+
+defineProps(["captionProp"]);
 
 onMounted(() => {
   obeserveFunc(".blog-section h2", "fade-right");
