@@ -16,12 +16,13 @@
       Through True Rich Attended does no end it his mother since real had half
       every him case in packages enquire we up ecstatic unsatiable.
     </p>
-    <blueBtn btn-name="Start a Project"></blueBtn>
+    <blueBtn btn-name="Start a Project" @click="openPopup"></blueBtn>
   </div>
 </template>
 
 <script setup>
 /* eslint-disable */
+import openPopup from "@/composables/openPopup";
 import blueBtn from "./blueBtn.vue";
 defineProps({
   showGrayText: {

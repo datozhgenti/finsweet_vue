@@ -16,7 +16,7 @@
             </p>
           </div>
           <div>
-            <blueBtn></blueBtn>
+            <blueBtn @click="openPopup"></blueBtn>
           </div>
         </div>
       </div>
@@ -45,6 +45,7 @@ import blueBtn from "@/components/global components/blueBtn.vue";
 import clientIcons from "../global components/clientIcons.vue";
 import { onMounted } from "vue";
 import observeFunc from "@/composables/observer.js";
+import openPopup from "@/composables/openPopup";
 
 onMounted(() => {
   observeFunc(".header-top-right img", "fade-left");

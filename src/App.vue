@@ -1,9 +1,13 @@
 <template>
+  <teleport to="body">
+    <popupComp></popupComp>
+  </teleport>
   <router-view></router-view>
 </template>
 
 <script setup>
 import { onMounted } from "vue";
+import popupComp from "./components/global components/popupComp.vue";
 
 const allElements = document.querySelector("body");
 

@@ -12,6 +12,7 @@ import reqComp from "@/components/careerInnerComponents/reqComp.vue";
 import respComp from "@/components/careerInnerComponents/respComp.vue";
 import blogInner from "@/pages/blogInner.vue";
 import teamMemberPage from "@/pages/teamMemberPage.vue";
+import privacyPolicy from "@/pages/privacyPolicy.vue";
 
 const routes = [
   { path: "/", component: homePage },
@@ -31,6 +32,7 @@ const routes = [
   { path: "/blog/:post", component: blogInner, name: "postPage" },
   { path: "/contact", component: contactPage },
   { path: "/team-member/:name", component: teamMemberPage, name: "memberPage" },
+  { path: "/privacy-policy", component: privacyPolicy },
 ];
 
 export default createRouter({
