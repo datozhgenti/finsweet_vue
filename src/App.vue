@@ -1,23 +1,19 @@
 <template>
   <teleport to="body">
     <popupComp></popupComp>
+    <preloaderComp></preloaderComp>
   </teleport>
+
   <router-view></router-view>
 </template>
 
+<script>
+export default {};
+</script>
+
 <script setup>
-import { onMounted } from "vue";
+import preloaderComp from "./components/global components/preloaderComp.vue";
 import popupComp from "./components/global components/popupComp.vue";
-
-const allElements = document.querySelector("body");
-
-allElements.style.display = "none";
-
-onMounted(() => {
-  window.addEventListener("load", () => {
-    allElements.style = "";
-  });
-});
 </script>
 
 <style>

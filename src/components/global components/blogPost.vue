@@ -16,6 +16,7 @@
         name="Read More"
         color="var(--btn-blue)"
         :arrowPhoto="require('@/assets/right-arrow-black.png')"
+        :pageLink="`/blog/${captionProp.split(' ').join('-')}`"
       ></arrowLink>
     </div>
   </div>

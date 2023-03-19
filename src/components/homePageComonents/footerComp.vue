@@ -153,22 +153,22 @@ const firstRowItems = ref([
   { name: "Service", to: "/service" },
   { name: "Company", to: "/company" },
   { name: "Career", to: "/career" },
-  { name: "News", to: "/" },
+  { name: "News", to: "/blog" },
 ]);
 
 const secondRowItems = ref([
   { name: "Technical support", to: "/service" },
-  { name: "Testing", to: "/" },
-  { name: "Development", to: "/" },
-  { name: "AWS/Azure", to: "/" },
-  { name: "Consulting", to: "/" },
-  { name: "Information Technology", to: "/" },
+  { name: "Testing", to: "/service" },
+  { name: "Development", to: "/service" },
+  { name: "AWS/Azure", to: "/service" },
+  { name: "Consulting", to: "/service" },
+  { name: "Information Technology", to: "/service" },
 ]);
 
 const thirdRowItems = ref([
   { name: "About Us", to: "/company" },
   { name: "Testimonial", to: "/" },
-  { name: "Privacy Policy", to: "/" },
+  { name: "Privacy Policy", to: "/privacy-policy" },
   { name: "Terms of use", to: "/" },
   { name: "Blog", to: "/blog" },
 ]);

@@ -23,9 +23,13 @@ const routes = [
     path: "/career/:careerName",
     component: careerInner,
     children: [
-      { path: "details", component: detailsComp, alias: "" },
-      { path: "requirments", component: reqComp },
-      { path: "responsibilities", component: respComp },
+      { path: "details", component: detailsComp, alias: "", name: "details" },
+      { path: "requirments", component: reqComp, name: "requirments" },
+      {
+        path: "responsibilities",
+        component: respComp,
+        name: "responsibilities",
+      },
     ],
   },
   { path: "/blog", component: blogPage },
@@ -38,4 +42,16 @@ const routes = [
 export default createRouter({
   routes,
   history: createWebHistory("/finsweet_vue/"),
+  scrollBehavior: (to, from, savedPosition) => {
+    if (
+      (to.name === "details" ||
+        to.name === "requirments" ||
+        to.name === "responsibilities") &&
+      from.path !== "/career"
+    ) {
+      return savedPosition;
+    } else {
+      return { top: 0 };
+    }
+  },
 });
