@@ -12,8 +12,16 @@
         </h3>
       </div>
       <div class="form-wrapper">
-        <form @submit.prevent="">
-          <input type="email" placeholder="Paresh@Pixeto.com" />
+        <form @submit.prevent="sendEmail">
+          <div class="flex">
+            <input
+              type="email"
+              placeholder="Paresh@Pixeto.com"
+              class="display-block"
+              ref="emailInput"
+            />
+            <button type="sumbit">Subscribe</button>
+          </div>
         </form>
       </div>
       <img src="@/assets/cta-shapes.png" alt="shapes" class="absolute" />
@@ -31,12 +39,29 @@
 </template>
 
 <script setup>
+/* eslint-disable */
 import obeserveFunc from "@/composables/observer";
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
+import Email from "@/smtp.js";
+
+const emailInput = ref(null);
 
 onMounted(() => {
   obeserveFunc(".cta-comp", "fade-left");
 });
+
+function sendEmail() {
+  Email.send({
+    SecureToken: "45ae150e-84b4-43e6-b2b8-1cfb51aac945",
+    To: emailInput.value.value,
+    From: "datozhgenti1998@gmail.com",
+    Subject: "Subscription",
+    Body: "You Just Subscribed To Our Website",
+  }).then(() => {
+    alert("You Subscribed");
+    emailInput.value.value = "";
+  });
+}
 </script>
 
 <style scoped>
@@ -73,6 +98,12 @@ input:focus {
 .blue-box img {
   top: 0;
   left: 0;
+}
+
+button {
+  background-color: brown;
+  border: none;
+  padding: 0 5px 0;
 }
 
 @media all and (max-width: 1490px) {

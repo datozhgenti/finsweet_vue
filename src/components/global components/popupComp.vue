@@ -29,7 +29,7 @@
               for="name"
               data-v-0f380a23=""
               >name</label
-            ><input type="text" id="name" data-v-0f380a23="" />
+            ><input type="text" id="name" data-v-0f380a23="" ref="name" />
           </div>
           <div class="input-wrapper" data-v-0f380a23="">
             <label
@@ -37,7 +37,7 @@
               for="email"
               data-v-0f380a23=""
               >E-mail</label
-            ><input type="email" id="email" data-v-0f380a23="" />
+            ><input type="email" id="email" data-v-0f380a23="" ref="email" />
           </div>
           <div class="input-wrapper" data-v-0f380a23="">
             <label
@@ -45,7 +45,7 @@
               for="subject"
               data-v-0f380a23=""
               >Subject</label
-            ><input type="text" id="subject" data-v-0f380a23="" />
+            ><input type="text" id="subject" data-v-0f380a23="" ref="subject" />
           </div>
           <div
             class="input-wrapper"
@@ -63,9 +63,10 @@
               id="message"
               placeholder="Type your Messege"
               data-v-0f380a23=""
+              ref="message"
             ></textarea>
           </div>
-          <blueBtn btnName="Send Messege" @click.prevent></blueBtn>
+          <blueBtn btnName="Send Messege" @click.prevent="sendEmail"></blueBtn>
         </form>
       </div>
     </div>
@@ -75,6 +76,39 @@
 <script setup>
 import blueBtn from "./blueBtn.vue";
 import closePopup from "@/composables/closePopup.js";
+import Email from "@/smtp.js";
+import { ref } from "vue";
+
+const name = ref(null);
+const email = ref(null);
+const subject = ref(null);
+const message = ref(null);
+
+function sendEmail() {
+  if (
+    name.value.value !== "" &&
+    email.value.value !== "" &&
+    subject.value.value !== "" &&
+    message.value.value !== ""
+  ) {
+    Email.send({
+      SecureToken: "45ae150e-84b4-43e6-b2b8-1cfb51aac945",
+      To: "datozhgenti1998@gmail.com",
+      From: "datozhgenti1998@gmail.com",
+      Subject: subject.value.value,
+      Body: `Hello, my name is ${name.value.value}. My Email is ${email.value.value} and this is my question: ${message.value.value}`,
+    }).then(() => {
+      alert("Your Message is Sent");
+      name.value.value = "";
+      email.value.value = "";
+      subject.value.value = "";
+      message.value.value = "";
+      document.querySelector(".popup-wrapper").click();
+    });
+  } else {
+    alert("Fill all inputs");
+  }
+}
 </script>
 
 <style scoped>

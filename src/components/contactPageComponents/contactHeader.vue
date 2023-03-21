@@ -13,14 +13,14 @@
         Fill up the Form and our team will get back to within 24 hrs
       </p>
       <div class="contact-form">
-        <form @submit.prevent="">
+        <form @submit.prevent="sendEmail">
           <div class="input-wrapper">
             <label
               class="font-weight-500 font-14 color-blue line-height-20 opacity-60"
               for="name"
               >name</label
             >
-            <input type="text" id="name" />
+            <input type="text" id="name" ref="name" />
           </div>
           <div class="input-wrapper">
             <label
@@ -28,7 +28,7 @@
               for="email"
               >E-mail</label
             >
-            <input type="email" id="email" />
+            <input type="email" id="email" ref="email" />
           </div>
           <div class="input-wrapper">
             <label
@@ -36,7 +36,7 @@
               for="subject"
               >Subject</label
             >
-            <input type="text" id="subject" />
+            <input type="text" id="subject" ref="subject" />
           </div>
           <div class="input-wrapper" id="last-input-wrapper">
             <label
@@ -45,7 +45,11 @@
               id="message-label"
               >Message</label
             >
-            <textarea id="message" placeholder="Type your Messege"></textarea>
+            <textarea
+              id="message"
+              placeholder="Type your Messege"
+              ref="message"
+            ></textarea>
           </div>
           <blueBtn btnName="Send Message" type="submit"></blueBtn>
         </form>
@@ -181,6 +185,39 @@
 import blueBtn from "../global components/blueBtn.vue";
 import obeserveElement from "@/composables/observer";
 import { onMounted } from "vue";
+import Email from "@/smtp.js";
+import { ref } from "vue";
+
+const name = ref(null);
+const email = ref(null);
+const subject = ref(null);
+const message = ref(null);
+
+function sendEmail() {
+  if (
+    name.value.value !== "" &&
+    email.value.value !== "" &&
+    subject.value.value !== "" &&
+    message.value.value !== ""
+  ) {
+    Email.send({
+      SecureToken: "45ae150e-84b4-43e6-b2b8-1cfb51aac945",
+      To: "datozhgenti1998@gmail.com",
+      From: "datozhgenti1998@gmail.com",
+      Subject: subject.value.value,
+      Body: `Hello, my name is ${name.value.value}. My Email is ${email.value.value} and this is my question: ${message.value.value}`,
+    }).then(() => {
+      alert("Your Message is Sent");
+      name.value.value = "";
+      email.value.value = "";
+      subject.value.value = "";
+      message.value.value = "";
+      document.querySelector(".popup-wrapper").click();
+    });
+  } else {
+    alert("Fill all inputs");
+  }
+}
 
 onMounted(() => {
   obeserveElement(".contact-header .left", "fade-right");

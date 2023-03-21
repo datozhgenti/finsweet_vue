@@ -9,28 +9,49 @@
       </h3>
     </div>
     <div>
-      <form @submit.prevent>
+      <form @submit.prevent="sendEmail">
         <div class="apply-inputs-wrapper grid">
           <div>
-            <input type="text" placeholder="First Name" class="left-input" />
+            <input
+              type="text"
+              placeholder="First Name"
+              class="left-input"
+              ref="firstName"
+            />
           </div>
           <div>
-            <input type="text" placeholder="Last Name" class="right-input" />
+            <input
+              type="text"
+              placeholder="Last Name"
+              class="right-input"
+              ref="lastName"
+            />
           </div>
           <div>
-            <input type="email" placeholder="Email Id" class="left-input" />
+            <input
+              type="email"
+              placeholder="Email Id"
+              class="left-input"
+              ref="email"
+            />
           </div>
           <div>
-            <input type="tel" placeholder="Mobile No" class="right-input" />
+            <input
+              type="tel"
+              placeholder="Mobile No"
+              class="right-input"
+              ref="tel"
+            />
           </div>
           <div class="text-area-div">
             <textarea
               placeholder="Why do you think you are good fit for Ether?"
+              ref="coverLetter"
             ></textarea>
           </div>
         </div>
         <div class="checkbox-input-div flex align-center">
-          <input type="checkbox" id="terms" />
+          <input type="checkbox" id="terms" v-model="checkbox" />
           <label for="terms">
             I agree to accept the privacy policy, We will add your contact
             details provided in this form to our system for contacting you
@@ -47,8 +68,45 @@
 
 <script setup>
 import blueBtn from "../global components/blueBtn.vue";
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 import obeserveElement from "@/composables/observer";
+import Email from "@/smtp.js";
+
+const firstName = ref(null);
+const lastName = ref(null);
+const email = ref(null);
+const tel = ref(null);
+const coverLetter = ref(null);
+const checkbox = ref(false);
+
+function sendEmail() {
+  if (
+    checkbox.value &&
+    firstName.value.value !== "" &&
+    lastName.value.value !== "" &&
+    email.value.value !== "" &&
+    tel.value.value !== "" &&
+    coverLetter.value.value !== ""
+  ) {
+    Email.send({
+      SecureToken: "45ae150e-84b4-43e6-b2b8-1cfb51aac945",
+      To: "datozhgenti1998@gmail.com",
+      From: "datozhgenti1998@gmail.com",
+      Subject: "Vacancy",
+      Body: `Hello my name is ${firstName.value.value} ${lastName.value.value}, my Email is ${email.value.value} and my tel is ${tel.value.value}. this is my cover letter:${coverLetter.value.value}`,
+    }).then(() => {
+      alert("Your Application is Sent");
+      firstName.value.value = "";
+      lastName.value.value = "";
+      email.value.value = "";
+      tel.value.value = "";
+      coverLetter.value.value = "";
+      checkbox.value = false;
+    });
+  } else {
+    alert("Accept our terms and Fill all inputs");
+  }
+}
 
 onMounted(() => {
   obeserveElement(".left-input", "fade-right");
