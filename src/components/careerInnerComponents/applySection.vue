@@ -121,7 +121,7 @@ onMounted(() => {
 }
 
 .apply-inputs-wrapper {
-  grid-template-columns: repeat(2, 624px);
+  grid-template-columns: 48% 48%;
   justify-content: space-between;
   row-gap: 32px;
 }

@@ -28,7 +28,7 @@
           <img
             :src="member.imgUrl"
             alt="member"
-            class="display-block obj-fit-cover"
+            class="display-block obj-fit-cover w100"
           />
           <div class="overlay absolute w100 h100">
             <div>
@@ -49,19 +49,19 @@
                 Support Assist
               </p>
               <div class="icons flex space-between">
-                <a href="https://twitter.com/"
+                <a href="https://twitter.com/" target="_"
                   ><img
                     src="@/assets/overlay1.png"
                     alt="social"
                     class="display-block"
                 /></a>
-                <a href="https://instagram.com/"
+                <a href="https://instagram.com/" target="_"
                   ><img
                     src="@/assets/overlay2.png"
                     alt="social"
                     class="display-block"
                 /></a>
-                <a href="https://linkedin.com/"
+                <a href="https://linkedin.com/" target="_"
                   ><img
                     src="@/assets/overlay3.png"
                     alt="social"

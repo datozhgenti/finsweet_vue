@@ -25,12 +25,20 @@
       ></arrowLink>
     </div>
     <div class="burger-btn-wrapper">
-      <span
+      <img
+        src="@/assets/burger-icon.svg"
+        alt="burger icon "
         @click="responsiveNavActive = !responsiveNavActive"
-        class="material-symbols-outlined burger-btn color-white"
-      >
-        menu
-      </span>
+        class="display-block burger-btn"
+        v-if="!responsiveNavActive"
+      />
+      <img
+        src="@/assets/closeBtn.svg"
+        alt="close btn"
+        @click="responsiveNavActive = !responsiveNavActive"
+        class="display-block burger-btn"
+        v-else
+      />
     </div>
     <transition name="menu">
       <responsiveMenu v-if="responsiveNavActive"></responsiveMenu>

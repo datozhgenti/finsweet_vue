@@ -51,16 +51,20 @@ onMounted(() => {
 });
 
 function sendEmail() {
-  Email.send({
-    SecureToken: "45ae150e-84b4-43e6-b2b8-1cfb51aac945",
-    To: emailInput.value.value,
-    From: "datozhgenti1998@gmail.com",
-    Subject: "Subscription",
-    Body: "You Just Subscribed To Our Website",
-  }).then(() => {
-    alert("You Subscribed");
-    emailInput.value.value = "";
-  });
+  if (emailInput.value.value !== "") {
+    Email.send({
+      SecureToken: "45ae150e-84b4-43e6-b2b8-1cfb51aac945",
+      To: emailInput.value.value,
+      From: "datozhgenti1998@gmail.com",
+      Subject: "Subscription",
+      Body: "You Just Subscribed To Our Website",
+    }).then(() => {
+      alert("You Subscribed");
+      emailInput.value.value = "";
+    });
+  } else {
+    alert("Please fill email input");
+  }
 }
 </script>
 
