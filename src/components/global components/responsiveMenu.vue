@@ -40,6 +40,7 @@ const menuItems = ref([
   top: 81px;
   text-align: center;
   z-index: 10;
+  box-shadow: 0px 6px 20px #000000;
 }
 
 a {
